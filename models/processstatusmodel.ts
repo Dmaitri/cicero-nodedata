@@ -12,10 +12,10 @@ export class ProcessStatusModel {
     @column({ name: "checkEnvironment", type: Sequelize.BOOLEAN })
     CheckEnvironment: boolean;
 
-    @column({ name: "main", type: Sequelize.BOOLEAN, allowNull: false })
+    @column({ name: "main", type: Sequelize.BOOLEAN, allowNull: true })
     Main: boolean;
 
-    @column({ name: "mainGitAnalysis", type: Sequelize.BOOLEAN, allowNull: false })
+    @column({ name: "mainGitAnalysis", type: Sequelize.BOOLEAN, allowNull: true })
     MainGitAnalysis: boolean;
 
     @column({ name: "prepareConfigurationList", type: Sequelize.BOOLEAN, allowNull: true })
@@ -44,6 +44,25 @@ export class ProcessStatusModel {
 
     @column({ name: "combineCeicroModelsOfall", type: Sequelize.BOOLEAN, allowNull: true })
     CombineCeicroModelsOfall: boolean;
+
+    static InitialValues(projectName:string){
+        let processStatus:ProcessStatusModel=new ProcessStatusModel();
+        processStatus.Projectname=projectName;
+        processStatus.CheckEnvironment = true;
+        processStatus.Main = true;
+        processStatus.MainGitAnalysis = true;
+        processStatus.MainCiceroAnalysis = true;
+        processStatus.MainSonarAnalysis = true;
+        processStatus.PrepareMainStatus = true;
+        processStatus.CombineCeicroModelsOfall = true;
+        processStatus.SonarETL = true;
+        processStatus.Analytics = true;
+        processStatus.Productivityjob = true;
+        processStatus.SonarAnalysis = true;
+        processStatus.PrepareConfigurationList = true;
+        return processStatus;
+
+    }
 }
 
 export default ProcessStatusModel;

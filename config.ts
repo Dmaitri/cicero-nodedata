@@ -28,7 +28,8 @@ class SqlConfig {
         },
         port: 57005,
         dialectOptions: {
-            encrypt: true
+            encrypt: true,
+            requestTimeout:50000
         }
         // SQLite only
         //storage: 'path/to/database.sqlite'
